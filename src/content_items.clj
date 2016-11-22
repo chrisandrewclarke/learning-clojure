@@ -30,10 +30,9 @@
         response    (foobar/get-response request-url)]
     response))
 
-(defn delete [retrieved-content-item]
-  (let [content-item-id (retrieved-content-item :contentItemId)
-        resource-url    (get-request-url content-item-id)
-        response        (foobar/delete-response resource-url)]
+(defn delete [content-item-id]
+  (let [resource-url (get-request-url content-item-id)
+        response     (foobar/delete-response resource-url)]
     response))
 
 (defn count []

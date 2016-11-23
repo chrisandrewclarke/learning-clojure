@@ -1,5 +1,5 @@
 (ns content-items
-  (:require [helper.foobar :as foobar]))
+  (:require [helper.api :as api]))
 
 (def resource-url "https://api.bibblio.org/v1/content-items")
 
@@ -16,32 +16,33 @@
 
 (defn create [name url text]
   (let [body     {:name name :url url :text text}
-        response (foobar/post-response resource-url body)]
+        response (api/post-response resource-url body)]
     response))
 
 (defn update [content-item-id name url text]
   (let [body         {:name name :url url :text text}
         resource-url (get-request-url content-item-id)
-        response     (foobar/put-response resource-url body)]
+        response     (api/put-response resource-url body)]
     response))
 
 (defn retrieve [content-item-id]
   (let [request-url (get-request-url content-item-id)
-        response    (foobar/get-response request-url)]
+        response    (api/get-response request-url)]
     response))
 
 (defn delete [content-item-id]
   (let [resource-url (get-request-url content-item-id)
-        response     (foobar/delete-response resource-url)]
+        response     (api/delete-response resource-url)]
     response))
 
 (defn count []
   (let [count-resource-url (str resource-url "/count")
-        response           (foobar/get-response count-resource-url)]
-    response))
+        response           (api/get-response count-resource-url)
+        count              (response :count)]
+    count))
 
 (defn list []
   (let [request-url   (get-request-url)
-        response      (foobar/get-response request-url)
+        response      (api/get-response request-url)
         content-items (response :results)]
     content-items))

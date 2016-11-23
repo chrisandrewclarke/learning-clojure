@@ -3,8 +3,7 @@
   :target "target"
   :dependencies '[[adzerk/boot-test "1.1.1" :scope "test"]
                   [clj-http "2.1.0"]
-                  [org.clojure/data.json "0.2.6"]
-                  [cheshire "5.6.3"]])
+                  [org.clojure/data.json "0.2.6"]])
 
 (task-options!
   pom {:project 'learn-x-in-y-clojure

@@ -12,8 +12,5 @@
                                                        :headers headers})
         response-body      (response :body)
         response-body-json (json/read-str response-body
-                                          :key-fn keyword)
-        token-type         (response-body-json :token_type)
-        token              (response-body-json :access_token)
-        access-token       (str token-type " " token)]
-    access-token))
+                                          :key-fn keyword)]
+    response-body-json))
